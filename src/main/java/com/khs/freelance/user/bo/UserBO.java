@@ -15,6 +15,6 @@ public class UserBO {
 	public int AddSignUp(String loginId, String password, String name, String email,
 			String job, int career, int salary) {
 		String encryptPassword = EncryptUtils.md5(password);
-		return userDAO.insertSignUp(loginId, password, name, email, job, career, salary);
+		return userDAO.insertSignUp(loginId, encryptPassword, name, email, job, career, salary);
 	}
 }
