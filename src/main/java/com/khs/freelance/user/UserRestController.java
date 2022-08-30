@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,22 @@ public class UserRestController {
 		}else {
 			map.put("result", "fail");
 		}
+		return map;
+		
+	}
+	
+	// 아이디 중복확인 api
+	@GetMapping("/user/duplicate_id")
+	public Map<String,Boolean> isduplicate(String loginId){
+		
+		Map<String, Boolean> map = new HashMap<>();
+		
+		if(userBO.isDuplicate(loginId)) {
+			map.put("result",true);
+		}else {
+			map.put("result",false);
+		}
+		
 		return map;
 		
 	}

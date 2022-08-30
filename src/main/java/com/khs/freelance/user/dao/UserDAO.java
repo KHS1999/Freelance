@@ -13,4 +13,6 @@ public interface UserDAO {
 			,@Param("job") String job 
 			,@Param("career") int career
 			,@Param("salary") int salary);
+	
+	public int selectCountLoginId(@Param("loginId") String loginId);
 }

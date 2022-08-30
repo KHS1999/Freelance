@@ -17,4 +17,14 @@ public class UserBO {
 		String encryptPassword = EncryptUtils.md5(password);
 		return userDAO.insertSignUp(loginId, encryptPassword, name, email, job, career, salary);
 	}
+	
+	public boolean isDuplicate(String loginId) {
+		int count = userDAO.selectCountLoginId(loginId);
+		
+		if(count == 0) {
+			return false; 
+		}else {
+			return true;
+		}
+	}
 }

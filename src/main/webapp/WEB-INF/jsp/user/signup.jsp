@@ -27,7 +27,11 @@
 				<h1 class="text-center">회원가입</h1>
 				<div class="d-flex justify-content">
 					<input type="text" id="idInput" class="form-control mt-2" placeholder="사용자 아이디">
-					<button id="is_duplicate" class="btn bg-info text-white ml-2">중복확인</button>
+					<button  id="isDuplicateBtn" class="btn bg-info text-white ml-2">중복확인</button>
+				</div>
+				<div class="small">
+					<sapn id="possibleText" class="text-success d-none">사용가능한 ID 입니다.</sapn>
+					<sapn id="duplicateText" class="text-danger d-none">중복된 ID 입니다.</sapn>
 				</div>
 				<input type="password" id="passwordInput" class="form-control mt-2" placeholder="비밀번호">
 				<input type="password" id="passwordcheckInput" class="form-control mt-2" placeholder="비밀번호 확인">
@@ -39,16 +43,48 @@
 				<button id="signupBtn" class="btn bg-primary text-white form-control mt-2 ">회원가입</button>
 			</div>
 		</section>
-		<footer class="mt-5">
-			<div class=" text-secondary small text-center">
-				(주)원츄 (대표이사:김효석) ⎮ 서울특별시 송파구 올림픽로999⎮ 통신판매번호 : 2022-서울강남-01010<br>
-				(유료직업소개사업등록번호 : (국내) 제2022-3220163-14-5-00001호, (국외) F12020320170005 ⎮ 사업자등록번호 : 299-86-650021
-				© Wantyou, Inc.
-			</div>
-		</footer>
+		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	<script>
 		$(document).ready(function(){
+			$("#isDuplicateBtn").on("click",function(){
+				
+				var isDuplicateCheck = false;
+				var isDuplicateId = true;
+				
+				$("#idInput").on("input",function() {
+					 isDuplicateCheck = false;
+					 isDuplicateId = true;		
+					$("#possibleText").addClass("d-none");
+					$("#duplicateText").addClass("d-none");
+				});	
+				 
+				let id = $("#idInput").val();
+				
+				if(id == ""){
+					alert("아이디를 입력하세요");
+					return;
+				}
+				$.ajax({
+					type:"get",
+					url:"/user/duplicate_id",
+					data:{"loginId":loginId},
+					success:function(data){
+						if(data.result == true){
+							$("#duplicateText").removeClass("d-none");
+							$("#possibleText").addClass("d-none");					
+						}else{
+							$("#possibleText").removeClass("d-none");
+							$("duplicateText").addClass("d-none");
+						}
+					},
+					error:function(){
+						alert("중복확인 에러");
+						return;
+					}
+				});
+				
+			});
 			
 			$("#signupBtn").on("click",function(){
 				
