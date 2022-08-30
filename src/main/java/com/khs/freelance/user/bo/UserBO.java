@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.khs.freelance.common.EncryptUtils;
 import com.khs.freelance.user.dao.UserDAO;
+import com.khs.freelance.user.model.User;
 
 @Service
 public class UserBO {
@@ -12,7 +13,7 @@ public class UserBO {
 	@Autowired
 	private UserDAO userDAO;
 	
-	public int AddSignUp(String loginId, String password, String name, String email,
+	public int addSignUp(String loginId, String password, String name, String email,
 			String job, int career, int salary) {
 		String encryptPassword = EncryptUtils.md5(password);
 		return userDAO.insertSignUp(loginId, encryptPassword, name, email, job, career, salary);
@@ -27,4 +28,9 @@ public class UserBO {
 			return true;
 		}
 	}
+	
+	public User getUser(String loginId, String password) {
+		return userDAO.selectUser(loginId, password);
+	}
+	
 }
