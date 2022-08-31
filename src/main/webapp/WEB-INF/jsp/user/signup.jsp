@@ -78,7 +78,7 @@
 						// 중복체크 여부 판단
 						 isDuplicateCheck = true;
 						
-						if(data.is_duplicate){ // 중복된 경우
+						if(data.isDuplicate){ // 중복된 경우
 							$("#duplicateText").removeClass("d-none");
 							$("#possibleText").addClass("d-none");
 							isDuplicateId = true;
