@@ -30,13 +30,57 @@
 				</div>
 				<input type="password" id="passwordInput" class="form-control mt-2" placeholder="비밀번호">
 				<div class="mt-5">
-					<button class="btn bg-secondary text-white ">회원가입</button>
+					<button id="signupBtn" class="btn bg-secondary text-white ">회원가입</button>
 					<button class="btn bg-dark text-white ">아이디/비밀번호 찾기</button>
 				</div>
-				<button class="btn bg-primary text-white form-control mt-2 mb-5">로그인</button>
+				<button id="loginBtn" class="btn bg-primary text-white form-control mt-2 mb-5">로그인</button>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
+	<script>
+		$(document).ready(function(){
+			
+			$("#signupBtn").on("click",function(){
+				location.href="/user/signup/view"
+			});
+			
+			$("#loginBtn").on("click",function(){
+				
+				alert();
+				
+				let loginId = $("#idInput").val();
+				let password = $("#passwordInput").val();
+				
+				if(loginId == ""){
+					alert("id를 입력해주세요");
+					return;
+				}
+				
+				if(password == ""){
+					alert("비밀번호를 입력해주세요");
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/user/signin",
+					data:{"loginId":loginId, "password":password},
+					success:function(data){
+						if(data.result == "success"){
+							location.href="/post/main/view"
+						}else{
+							alert("로그인 실패!");
+							return;
+						}
+					},
+					error:function(){
+						alert("로그인 에러");
+						return;
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

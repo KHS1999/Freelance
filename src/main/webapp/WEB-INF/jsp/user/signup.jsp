@@ -47,119 +47,119 @@
 	</div>
 	<script>
 		$(document).ready(function(){
+			
+			var isDuplicateCheck = false;
+			var isDuplicateId = true;
+			
+			$("#idInput").on("input",function() {
+				 isDuplicateCheck = false;
+				 isDuplicateId = true;		
+				$("#possibleText").addClass("d-none");
+				$("#duplicateText").addClass("d-none");
+			});	
+			
+		
+			
 			$("#isDuplicateBtn").on("click",function(){
-				
-				var isDuplicateCheck = false;
-				var isDuplicateId = true;
-				
-				$("#idInput").on("input",function() {
-					 isDuplicateCheck = false;
-					 isDuplicateId = true;		
-					$("#possibleText").addClass("d-none");
-					$("#duplicateText").addClass("d-none");
-				});	
-				 
 				let id = $("#idInput").val();
 				
 				if(id == ""){
-					alert("아이디를 입력하세요");
-					return;
-				}
+					alert("아이디를 입력해주세요!");
+					return ;
+				}	
+				
 				$.ajax({
 					type:"get",
 					url:"/user/duplicate_id",
-					data:{"loginId":loginId},
+					data:{"loginId":id},
 					success:function(data){
-						if(data.result == true){
+						// {"is_duplicate" : "true"}
+						// {"is_duplicate" : "false"}
+						// 중복체크 여부 판단
+						 isDuplicateCheck = true;
+						
+						if(data.is_duplicate){ // 중복된 경우
 							$("#duplicateText").removeClass("d-none");
-							$("#possibleText").addClass("d-none");					
-						}else{
-							$("#possibleText").removeClass("d-none");
-							$("duplicateText").addClass("d-none");
+							$("#possibleText").addClass("d-none");
+							isDuplicateId = true;
+						}else{ // 중복되지 않은 경우
+							$("#possibleText").removeClass("d-none");	
+							$("#duplicateText").addClass("d-none");
+							isDuplicateId = false;
 						}
 					},
 					error:function(){
 						alert("중복확인 에러");
-						return;
 					}
 				});
-				
 			});
 			
 			$("#signupBtn").on("click",function(){
 				
 				let id = $("#idInput").val();
 				let password = $("#passwordInput").val();
-				let passwordcheck = $("#passwordcheckInput").val();
+				let checkpassword = $("#checkpasswordInput").val();
 				let name = $("#nameInput").val();
 				let email = $("#emailInput").val();
-				let job = $("#jobInput").val();
-				let career = $("#careerInput").val();
-				let salary = $("#salaryInput").val();
 				
 				if(id == ""){
-					alert("아이디를 입력하세요");
+					alert("아이디를 입력해주세요!");
+					return ;
+				}
+				
+				// 중복체크 여부 유효성 검사
+				//if(isDuplicateCheck == false){
+				if(!isDuplicateCheck){
+					alert("중복여부 체크를 진행해주세요");
 					return;
 				}
 				
+				// 아이디 중복여부 유효성 검사
+				//if(isDuplicateId == true){
+				if(isDuplicateId){	
+					alert("중복된 아이디입니다");
+					return ;
+				}
+				
 				if(password == ""){
-					alert("비밀번호를 입력해주세요");
+					alert("비밀번호를 입력해주세요!");
 					return;
 				}
 				
-				if(password == ""){
-					alert("비밀번호 확인란을 입력해주세요");
+				if(checkpassword == ""){
+					alert("비밀번호확인을 입력해주세요!");
+					return;
 				}
 				
-				if(password != passwordcheck){					
-					alert("비밀번호가 일치하지 않습니다");
-					return
+				if(password != checkpassword){
+					alert("비밀번호가 일치하지 않습니다!");
+					return;
 				}
-				
 				if(name == ""){
-					alert("이름을 입력해주세요");
+					alert("이름을 입력해주세요!")
 					return;
 				}
-				
 				if(email == ""){
-					alert("이메일을 입력해주세요");
+					alert("이메일을 입력해주세요!");
 					return;
 				}
-				
-				if(job == ""){
-					alert("직군/직무를 입력해주세요");
-					return;
-				}
-				
-				if(career == ""){
-					alert("경력을 입력해주세요");
-					return;
-				}
-				
-				if(salary == ""){
-					alert("희망급여를 입력해주세요");
-					return;
-				}
-				
 				$.ajax({
 					type:"post",
 					url:"/user/signup",
-					data:{"loginId":id,"password":password, "name":name, "email":email, "job":job, "career":career,"salary":salary},
+					data:{"loginId":id, "password":password, "name":name, "email":email},
 					success:function(data){
 						if(data.result == "success"){
-							location.href="/user/signin"
+							location.href = "/user/signin/view";
 						}else{
-							alert("회원가입 실패!");
-							return;
+							alert("회원가입 실패");
 						}
 					},
 					error:function(){
-						alert("회원가입 오류");
-						return;
+						alert("회원가입 에러!!");
 					}
-					
 				});
 			});
+			
 		});
 	</script>
 
