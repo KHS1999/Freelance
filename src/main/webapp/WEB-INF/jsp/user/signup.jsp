@@ -98,9 +98,12 @@
 				
 				let id = $("#idInput").val();
 				let password = $("#passwordInput").val();
-				let checkpassword = $("#checkpasswordInput").val();
+				let checkpassword = $("#passwordcheckInput").val();
 				let name = $("#nameInput").val();
 				let email = $("#emailInput").val();
+				let job = $("#jobInput").val();
+				let career = $("#careerInput").val();
+				let salary = $("#salaryInput").val();
 				
 				if(id == ""){
 					alert("아이디를 입력해주세요!");
@@ -146,7 +149,7 @@
 				$.ajax({
 					type:"post",
 					url:"/user/signup",
-					data:{"loginId":id, "password":password, "name":name, "email":email},
+					data:{"loginId":id, "password":password, "name":name, "email":email, "job":job, "career": career, "salary": salary},
 					success:function(data){
 						if(data.result == "success"){
 							location.href = "/user/signin/view";
