@@ -4,6 +4,7 @@
 	margin:auto;
 }
 .nav{
+	height:60px;
 	 background-color:#e3f2fd;
 }
 .section{
@@ -20,7 +21,7 @@
 
 .content{
 	position:absolute;
-	top: 30%;
+	top: 20%;
  	left: 50%;
  	transform: translate(-50%, -50%);
 }
