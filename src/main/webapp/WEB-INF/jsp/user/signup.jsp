@@ -19,15 +19,15 @@
 	<div id="wrap">
 		<header class="py-5">
 			<div class="text-center">
-				<h1>Want You</h1>
+				<h1>Puzzle Project</h1>
 			</div>
 		</header>
-		<section class="d-flex justify-content-center rounded section  ">
+		<section class="d-flex justify-content-center border border-dark section  ">
 			<div class="my-3">
 				<h1 class="text-center">회원가입</h1>
 				<div class="d-flex justify-content">
 					<input type="text" id="idInput" class="form-control mt-2" placeholder="사용자 아이디">
-					<button  id="isDuplicateBtn" class="btn bg-info text-white ml-2">중복확인</button>
+					<button  id="isDuplicateBtn" type="button" class="btn btn-outline-info  ml-2">중복확인</button>
 				</div>
 				<div class="small">
 					<sapn id="possibleText" class="text-success d-none">사용가능한 ID 입니다.</sapn>
@@ -40,7 +40,7 @@
 				<input type="text" id="jobInput" class="form-control mt-2" placeholder="직군/직무">
 				<input type="text" id="careerInput" class="form-control mt-2" placeholder="경력">				
 				<input type="text" id="salaryInput" class="form-control mt-2" placeholder="희망급여(만원)">	
-				<button id="signupBtn" class="btn bg-primary text-white form-control mt-2 ">회원가입</button>
+				<button id="signupBtn" type="button" class="btn btn-outline-primary form-control mt-2 ">회원가입</button>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
@@ -66,6 +66,7 @@
 				if(id == ""){
 					alert("아이디를 입력해주세요!");
 					return ;
+					
 				}	
 				
 				$.ajax({
@@ -73,12 +74,12 @@
 					url:"/user/duplicate_id",
 					data:{"loginId":id},
 					success:function(data){
-						// {"is_duplicate" : "true"}
-						// {"is_duplicate" : "false"}
+						// {"result" : "true"}
+						// {"result" : "false"}
 						// 중복체크 여부 판단
 						 isDuplicateCheck = true;
 						
-						if(data.isDuplicate){ // 중복된 경우
+						if(data.result){ // 중복된 경우
 							$("#duplicateText").removeClass("d-none");
 							$("#possibleText").addClass("d-none");
 							isDuplicateId = true;
@@ -95,7 +96,7 @@
 			});
 			
 			$("#signupBtn").on("click",function(){
-				
+							
 				let id = $("#idInput").val();
 				let password = $("#passwordInput").val();
 				let checkpassword = $("#passwordcheckInput").val();

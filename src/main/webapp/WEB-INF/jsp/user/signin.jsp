@@ -24,16 +24,17 @@
 		</header>
 		<section class="d-flex justify-content-center rounded section  ">
 			<div class="my-3">
-				<h1 class="text-center">Want You</h1>
+				<h1 class="text-center">Puzzle Project</h1>
 				<div class="d-flex justify-content">
 					<input type="text" id="idInput" class="form-control mt-2" placeholder="아이디">
 				</div>
 				<input type="password" id="passwordInput" class="form-control mt-2" placeholder="비밀번호">
 				<div class="mt-5">
-					<button id="signupBtn" class="btn bg-secondary text-white ">회원가입</button>
-					<button class="btn bg-dark text-white ">아이디/비밀번호 찾기</button>
+					<button id="signupBtn" type="button" class="btn btn-outline-secondary">회원가입</button>
+					<button type="button" class="btn btn-outline-dark">아이디/비밀번호 찾기</button>
 				</div>
-				<button id="loginBtn" class="btn bg-primary text-white form-control mt-2 mb-5">로그인</button>
+				<button id="loginBtn" type="button" class="btn btn-outline-primary form-control mt-2 mb-5">로그인</button>
+				
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
@@ -47,7 +48,6 @@
 			
 			$("#loginBtn").on("click",function(){
 				
-				alert();
 				
 				let loginId = $("#idInput").val();
 				let password = $("#passwordInput").val();
