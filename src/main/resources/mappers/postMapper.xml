@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.khs.freelance.post.dao.PostDAO">
+  	<select id="selectList" parameterType="map"
+  		resultType="com.khs.freelance.post.model.Post">
+  		SELECT
+  			`id`
+  			,`userId`
+  			,`companyName`
+			,`name`
+			,`email`
+			,`phoneNumber`
+			,`projectName`
+			,`job`
+			,`needPerson`
+			,`skill`
+			,`startProject`
+			,`expectTerm`
+			,`projectBudget`
+			,`minAmount`
+			,`maxAmount`
+			,`workWay`
+			,`progress`
+			,`main`
+			,`detail`
+			,`etc`
+			,`file`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`post`
+		ORDER BY
+			`id` DESC		
+  	</select>
+  
+  </mapper>

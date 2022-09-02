@@ -3,6 +3,7 @@
 	width:1200px;
 	margin:auto;
 }
+
 .nav{
 	 background-color:#e3f2fd;
 }
@@ -20,10 +21,22 @@
 
 .content{
 	position:absolute;
-	top: 30%;
+	top: 20%;
  	left: 50%;
  	transform: translate(-50%, -50%);
 }
 .section-content{
+	font-family: 'Nanum Pen Script', cursive;
+}
+.section-bg{
+	background-color: #cccccc;
+	height:600px;
+}
+
+.section-div{
+	width:800px;
+	height:300px;
+	background-color:white;
+	
 	
 }
