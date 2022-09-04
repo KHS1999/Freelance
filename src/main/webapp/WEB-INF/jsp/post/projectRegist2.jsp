@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>프로젝트 등록1</title>
+<title>프로젝트 등록2</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -24,21 +24,24 @@
 			<div class="py-3 section-div">
 				<div class="d-flex justify-content-between">
 					<div class="ml-3 text-primary">
-						 <img src="/static/images/number1.png" width="25px"><span class="ml-3">의뢰인 정보</span>
-					</div>			
+						 <img src="/static/images/number2.png" width="25px"><span class="ml-3">프로젝트 기본 정보</span>
+					</div>
+					<div >
+						
+					</div>							
 					<div>
+					<button id="preBtn" type="button" class="btn btn-outline-secondary mr-3" >이전단계</button>
 						<button id="nextBtn" type="button" class="btn btn-outline-primary mr-3">다음단계</button>
 					</div>
 				</div>	
 					<div>
 						<div class="d-flex justify-content-between mt-3">
 							<div class="ml-3">
-								<span class="mr-3">회사명(사업자명)</span>
-								<input type="checkbox"><span class="text-secondary ">사업자가 아닙니다</span>.
+								<span class="mr-3">프로젝트명</span><span class="text-danger">*</span><span class="text-align-right">0/30</span>
 								<input type="text" class="form-control mt-2">
 							</div>
 							<div class="mr-3">
-								담당자이름<span class="text-danger">*</span>
+								직군/직무<span class="text-danger">*</span>
 								<input type="text" class="form-control mt-2">
 							</div>
 						</div>
@@ -46,12 +49,17 @@
 					<div>
 						<div class="d-flex justify-content-between mt-5">
 							<div class="ml-3">
-								담당자 이메일<span class="text-danger">*</span>
-								<input type="text" class="form-control mt-2">
+								필요 인력 및 희망 연차<span class="text-danger">*</span>
+								<div class="d-flex mt-2">
+									<input type="text" class="form-control mr-2">명
+								</div>
+								<div class="d-flex mt-2">
+								 	<input type="text" class="form-control mr-2">년
+								</div>							
 							</div>
 							<div class="mr-3">
-								담당자 연락처<span class="text-danger">*</span>
-								<input type="text" class="form-control mt-2">
+								요구 스킬<span class="text-danger">*</span>
+								<input type="text" class="form-control mt-2" placeholder="ex) rudy,python,illustrator등">
 							</div>						
 					</div>
 				</div>		
@@ -67,7 +75,12 @@
 			
 			$("#nextBtn").on("click",function(){
 				
-				location.href="/post/regist2";
+				location.href="/post/regist3";
+			});
+			
+			$("#preBtn").on("click",function(){
+				
+				location.href="/post/regist1";
 			});
 		});
 	</script>
