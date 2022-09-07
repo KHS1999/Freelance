@@ -100,7 +100,7 @@
 					success:function(data){
 						
 						if(data.result == "success"){
-							return "/post/forward";
+							
 							location.href="/post/regist2";
 						}else{
 							alert("프로젝트 등록 실패");

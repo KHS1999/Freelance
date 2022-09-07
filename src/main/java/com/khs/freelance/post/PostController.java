@@ -41,23 +41,13 @@ public class PostController {
 		return "post/projectRegist";
 	}
 	
-	// 포워드 1	
-	@GetMapping("/post/forward")
-	public String projectForward(
-			@RequestParam( required=false ,value="companyName") String companyName
-			,@RequestParam( value="name") String name
-			,@RequestParam( value="emial") String email
-			,@RequestParam( value="phoneNumber") String phoneNumber){
-		
-		return "forward:/post/regist2";
-	
-	
-
-	}
 	
 	// 등록페이지 2
 	@GetMapping("/post/regist2")
-	public String projectRegist2() {
+	public String projectRegist2(@RequestParam( required=false ,value="companyName") String companyName
+			,@RequestParam( value="name") String name
+			,@RequestParam( value="emial") String email
+			,@RequestParam( value="phoneNumber") String phoneNumber) {
 		return "/post/projectRegist2";
 	}		
 	
