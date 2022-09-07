@@ -35,11 +35,11 @@
 							<div class="ml-3">
 								<span class="mr-3">회사명(사업자명)</span>
 								<input type="checkbox"><span class="text-secondary ">사업자가 아닙니다</span>.
-								<input type="text" class="form-control mt-2">
+								<input id="companyNameInput" type="text" class="form-control mt-2">
 							</div>
 							<div class="mr-3">
 								담당자이름<span class="text-danger">*</span>
-								<input type="text" class="form-control mt-2">
+								<input id="nameInput" type="text" class="form-control mt-2">
 							</div>
 						</div>
 					</div>
@@ -47,11 +47,11 @@
 						<div class="d-flex justify-content-between mt-5">
 							<div class="ml-3">
 								담당자 이메일<span class="text-danger">*</span>
-								<input type="text" class="form-control mt-2">
+								<input id="emailInput" type="text" class="form-control mt-2">
 							</div>
 							<div class="mr-3">
 								담당자 연락처<span class="text-danger">*</span>
-								<input type="text" class="form-control mt-2">
+								<input id="phoneNumberInput" type="text" class="form-control mt-2">
 							</div>						
 					</div>
 				</div>		
@@ -65,9 +65,53 @@
 	<script>
 		$(document).ready(function(){
 			
+			
 			$("#nextBtn").on("click",function(){
+				let companyName = $("#companyName").val();
+				let name = $("#nameInput").val();
+				let email = $("#emailInput").val();
+				let phoneNumber = $("#phoneNumber").val();
 				
-				location.href="/post/regist2";
+				if(companyName == ""){
+					alert("회사/사업자명을 입력해주세요");
+					return;
+				}
+				
+				if(name == ""){
+					alert("이름을 작성해주세요");
+					return;
+				}
+				
+				if(email == ""){
+					alert("이메일을 작성해주세요")
+					return;
+				}
+				
+				if(phoneNumber == ""){
+					alert("연락처를 작성해주세요")
+					return;
+				}
+				
+				$.ajax({
+					
+					type:"post",
+					url:"/post/forward1",
+					data:{"companyName":companyName,"name":name,"email":email,"phoneNumber":phoneNumber},
+					success:function(data){
+						
+						if(data.result == "success"){
+							return "/post/forward";
+							location.href="/post/regist2";
+						}else{
+							alert("프로젝트 등록 실패");
+						}
+					},
+					error(){
+						alert("프로젝트 등록 에러");
+						return;
+					}
+				});
+				
 			});
 		});
 	</script>

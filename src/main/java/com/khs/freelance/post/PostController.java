@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.khs.freelance.post.bo.PostBO;
 import com.khs.freelance.post.model.Post;
@@ -37,14 +38,29 @@ public class PostController {
 	// 등록페이지 1
 	@GetMapping("/post/regist1")
 	public String projectRegist1(){
-		return "/post/projectRegist";
+		return "post/projectRegist";
+	}
+	
+	// 포워드 1	
+	@GetMapping("/post/forward")
+	public String projectForward(
+			@RequestParam( required=false ,value="companyName") String companyName
+			,@RequestParam( value="name") String name
+			,@RequestParam( value="emial") String email
+			,@RequestParam( value="phoneNumber") String phoneNumber){
+		
+		return "forward:/post/regist2";
+	
+	
+
 	}
 	
 	// 등록페이지 2
 	@GetMapping("/post/regist2")
 	public String projectRegist2() {
 		return "/post/projectRegist2";
-	}	
+	}		
+	
 	// 등록페이지 3
 	@GetMapping("/post/regist3")
 	public String projectRegist3() {
@@ -55,7 +71,7 @@ public class PostController {
 	public String projectRegist4() {
 		return "/post/projectRegist4";
 	}
-	// 등록페이지 2
+	// 등록페이지 5
 	@GetMapping("/post/regist5")
 	public String projectRegist5() {
 		return "/post/projectRegist5";	

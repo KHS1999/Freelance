@@ -25,7 +25,6 @@
 			,`progress`
 			,`main`
 			,`detail`
-			,`etc`
 			,`file`
 			,`createdAt`
 			,`updatedAt`
@@ -34,5 +33,56 @@
 		ORDER BY
 			`id` DESC		
   	</select>
+  	
+  	<insert id="insertPost" parameterType="map">
+  		INSERT INTO
+  			`post`
+  			
+  				(
+	  				`userId`
+	  				,`companyName`
+	  				,`name`
+	  				,`email`
+					,`phoneNumber`
+					,`projectName`
+					,`job`
+					,`needPerson`
+					,`skill`
+					,`startProject`
+					,`expectTerm`
+					,`projectBudget`
+					,`minAmount`
+					,`maxAmount`
+					,`workWay`
+					,`progress`
+					,`main`
+					,`detail`
+					,`imagePath`
+  				)
+  			VALUES
+  				(
+  					#{userId}
+	  				,#{companyName}
+	  				,#{name}
+	  				,#{email}
+					,#{phoneNumber}
+					,#{projectName}
+					,#{job}
+					,#{needPerson}
+					,#{skill}
+					,#{startProject}
+					,#{expectTerm}
+					,#{projectBudget}
+					,#{minAmount}
+					,#{maxAmount}
+					,#{workWay}
+					,#{progress}
+					,#{main}
+					,#{detail}
+					,#{imagePath}
+  				
+  				)
+  	
+  	</insert>
   
   </mapper>
