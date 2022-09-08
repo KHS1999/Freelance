@@ -21,6 +21,7 @@
 		<section class="section-bg">
 			<h1 class="text-center mt-3 pt-3">프로젝트 / 외주등록</h1>
 			<div class="d-flex justify-content-center mt-5">
+			<form action="/post/insert" method="post">
 			<div class="py-3 section-div">
 				<div class="d-flex justify-content-between">
 					<div class="ml-3 text-primary">
@@ -31,7 +32,7 @@
 					</div>							
 					<div>
 					<button id="preBtn" type="button" class="btn btn-outline-secondary mr-3" >이전단계</button>
-						<button id="nextBtn" type="button" class="btn btn-outline-primary mr-3">등록하기</button>
+						<button id="nextBtn" type="submit" class="btn btn-outline-primary mr-3">등록하기</button>
 					</div>
 				</div>	
 					<div>
@@ -67,6 +68,22 @@
 					</div>
 				</div>		
 			</div>
+				<input type="hidden" value="${param.companyName }" name="companyName">
+				<input type="hidden" value="${param.name }" name="name">
+				<input type="hidden" value="${param.email }" name="email">
+				<input type="hidden" value="${param.phoneNumber }" name="phoneNumber">
+				<input type="hidden" value="${param.projectName }" name="projectName">
+				<input type="hidden" value="${param.job }" name="job">
+				<input type="hidden" value="${param.needPerson }" name="needPerson">
+				<input type="hidden" value="${param.year }" name="year">
+				<input type="hidden" value="${param.skill}" name="skill">
+				<input type="hidden" value="${param.startProject }" name="startProject">
+				<input type="hidden" value="${param.expectTerm }" name="expectTerm">
+				<input type="hidden" value="${param.projectBudget }" name="projectBudget">
+				<input type="hidden" value="${param.workWay }" name="workWay">
+				<input type="hidden" value="${param.minAmount }" name="minAmount">
+				<input type="hidden" value="${param.maxAmount }" name="maxAmount">
+			</form>	
 		</div>	
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>

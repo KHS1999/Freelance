@@ -22,6 +22,7 @@
 			<h1 class="text-center mt-3 pt-3">프로젝트 / 외주등록</h1>
 			<div class="d-flex justify-content-center mt-5">
 			<div class="py-3 section-div">
+			<form id="form" action="/post/regist3" method="get">
 				<div class="d-flex justify-content-between">
 					<div class="ml-3 text-primary">
 						 <img src="/static/images/number2.png" width="25px"><span class="ml-3">프로젝트 기본 정보</span>
@@ -31,18 +32,18 @@
 					</div>							
 					<div>
 					<button id="preBtn" type="button" class="btn btn-outline-secondary mr-3" >이전단계</button>
-						<button id="nextBtn" type="button" class="btn btn-outline-primary mr-3">다음단계</button>
+						<button id="nextBtn" type="submit" class="btn btn-outline-primary mr-3">다음단계</button>
 					</div>
 				</div>	
 					<div>
 						<div class="d-flex justify-content-between mt-3">
 							<div class="ml-3">
 								<span class="mr-3">프로젝트명</span><span class="text-danger">*</span><span class="text-align-right">0/30</span>
-								<input type="text" class="form-control mt-2">
+								<input name="projectName" id="projectNameInput" type="text" class="form-control mt-2">
 							</div>
 							<div class="mr-3">
 								직군/직무<span class="text-danger">*</span>
-								<input type="text" class="form-control mt-2">
+								<input name="job" id="jobInput" type="text" class="form-control mt-2">
 							</div>
 						</div>
 					</div>
@@ -51,18 +52,23 @@
 							<div class="ml-3">
 								필요 인력 및 희망 연차<span class="text-danger">*</span>
 								<div class="d-flex mt-2">
-									<input type="text" class="form-control mr-2">명
+									<input name="needPerson" id="needPersonInput" type="text" class="form-control mr-2">명
 								</div>
 								<div class="d-flex mt-2">
-								 	<input type="text" class="form-control mr-2">년
+								 	<input name="year" id="yearInput" type="text" class="form-control mr-2">년
 								</div>							
 							</div>
 							<div class="mr-3">
 								요구 스킬<span class="text-danger">*</span>
-								<input type="text" class="form-control mt-2" placeholder="ex) rudy,python,illustrator등">
+								<input name="skill" id="skillInput" type="text" class="form-control mt-2" placeholder="ex) rudy,python,illustrator등">
 							</div>						
 					</div>
-				</div>		
+				</div>
+				<input type="hidden" value="${param.companyName }" name="companyName">
+				<input type="hidden" value="${param.name }" name="name">
+				<input type="hidden" value="${param.email }" name="email">
+				<input type="hidden" value="${param.phoneNumber }" name="phoneNumber">
+				</form>
 			</div>
 		</div>	
 		</section>
@@ -73,9 +79,40 @@
 	<script>
 		$(document).ready(function(){
 			
-			$("#nextBtn").on("click",function(){
+			$("#form").on("submit",function(){
 				
-				location.href="/post/regist3";
+				let projectName = $("#projectNameInput").val();
+				let job = $("#jobInput").val();
+				let needPerson = $("#needPersonInput"). val();
+				let year = $("#yearInput").val();
+				let skill = $("#skillInput").val();
+				
+				if(projectName == ""){
+					alert("프로젝트 이름을 작성해주세요");
+					return false;
+				}
+				
+				if(job == ""){
+					alert("직군/직무 를 작성해주세요");
+					return false;
+				}
+				
+				if(needPerson == ""){
+					alert("인원을 작성해주세요");
+					return false;
+				}
+				
+				if(year == ""){
+					alert("희망 연차를 작성해주세요");
+					return false;
+				}
+				
+				if(skill == ""){
+					alert("필요한 스킬을 작성해주세요");
+					return false;
+				}
+				
+				
 			});
 			
 			$("#preBtn").on("click",function(){

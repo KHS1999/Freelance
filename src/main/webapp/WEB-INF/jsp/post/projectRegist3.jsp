@@ -25,6 +25,7 @@
 		<section class="section-bg">
 			<h1 class="text-center mt-3 pt-3">프로젝트 / 외주등록</h1>
 			<div class="d-flex justify-content-center mt-5">
+			<form id="form" action="/post/regist4" method="get">
 			<div class="py-3 section-div">
 				<div class="d-flex justify-content-between">
 					<div class="ml-3 text-primary">
@@ -35,7 +36,7 @@
 					</div>							
 					<div>
 					<button id="preBtn" type="button" class="btn btn-outline-secondary mr-3" >이전단계</button>
-						<button id="nextBtn" type="button" class="btn btn-outline-primary mr-3">다음단계</button>
+						<button id="nextBtn" type="submit" class="btn btn-outline-primary mr-3">다음단계</button>
 					</div>
 				</div>	
 					<div>
@@ -43,17 +44,17 @@
 							<div class="ml-3 ">
 								<span class="mr-3">프로젝트시작 희망일</span><span class="text-danger">*</span>
 								<input type="checkbox">협의가능
-								<input  id="Date" type="text" class="form-control mt-2" placeholder="날짜 선택">
+								<input name="startProject" id="Date" type="text" class="form-control mt-2" placeholder="날짜 선택">
 							</div>
 							<div class="px-3  ">
 								예상기간<span class="text-danger">*</span>
 								<div class="d-flex mt-2">
-									<select  class="form-control mr-2">
-										<option value="month">개월</option>
-										<option value="week">주</option>
+									<select id="select" class="form-control mr-2">
+										<option value="개월">개월</option>
+										<option value="주">주</option>
 									</select>
 									<div>
-										<input type="text" class="form-control px-3" placeholder="시간기입(숫자)"> 
+										<input name="expectTerm" id="expectTermInput" type="text" class="form-control px-3" placeholder="시간기입(숫자)"> 
 									</div>
 								</div>	
 							</div>
@@ -62,6 +63,16 @@
 					</div>
 	
 			</div>
+				<input type="hidden" value="${param.companyName }" name="companyName">
+				<input type="hidden" value="${param.name }" name="name">
+				<input type="hidden" value="${param.email }" name="email">
+				<input type="hidden" value="${param.phoneNumber }" name="phoneNumber">
+				<input type="hidden" value="${param.projectName }" name="projectName">
+				<input type="hidden" value="${param.job }" name="job">
+				<input type="hidden" value="${param.needPerson }" name="needPerson">
+				<input type="hidden" value="${param.year }" name="year">
+				<input type="hidden" value="${param.skill}" name="skill"> 			
+			</form>
 		</div>	
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
@@ -87,15 +98,31 @@
 				$("#Date").datepicker();
 			});
 			
-			$("#nextBtn").on("click",function(){
+			$("#form").on("submit",function(){
 				
-				location.href="/post/regist4";
+				let date = $("#Date").val();
+				let expectTerm = $("#expectTermInput").val();
+				
+				if(Date == ""){
+					alert("날짜를 선택해주세요");
+					return false;
+				}
+				
+				if(expectTerm == ""){
+					alert("예상기간을 작성해주세요");
+					return false;
+				}
+				
+				$("#expectTermInput").val(expectTerm + $("#select option:selected").val());
+				
 			});
 			
 			$("#preBtn").on("click",function(){
 				
 				location.href="/post/regist2";
 			});
+			
+			
 		});
 	</script>
 

@@ -22,24 +22,27 @@
 			<h1 class="text-center mt-3 pt-3">프로젝트 / 외주등록</h1>
 			<div class="d-flex justify-content-center mt-5">
 			<div class="py-3 section-div">
+			<form  id="form" action="/post/regist2" method="get">	
 				<div class="d-flex justify-content-between">
 					<div class="ml-3 text-primary">
 						 <img src="/static/images/number1.png" width="25px"><span class="ml-3">의뢰인 정보</span>
-					</div>			
+					</div>
+							
 					<div>
-						<button id="nextBtn" type="button" class="btn btn-outline-primary mr-3">다음단계</button>
+						<button id="nextBtn" type="submit" class="btn btn-outline-primary mr-3">다음단계</button>
 					</div>
 				</div>	
+					
 					<div>
 						<div class="d-flex justify-content-between mt-3">
 							<div class="ml-3">
 								<span class="mr-3">회사명(사업자명)</span>
 								<input type="checkbox"><span class="text-secondary ">사업자가 아닙니다</span>.
-								<input id="companyNameInput" type="text" class="form-control mt-2">
+								<input name="companyName" id="companyNameInput" type="text" class="form-control mt-2">
 							</div>
 							<div class="mr-3">
 								담당자이름<span class="text-danger">*</span>
-								<input id="nameInput" type="text" class="form-control mt-2">
+								<input name="name" id="nameInput" type="text" class="form-control mt-2">
 							</div>
 						</div>
 					</div>
@@ -47,14 +50,15 @@
 						<div class="d-flex justify-content-between mt-5">
 							<div class="ml-3">
 								담당자 이메일<span class="text-danger">*</span>
-								<input id="emailInput" type="text" class="form-control mt-2">
+								<input name="email" id="emailInput" type="text" class="form-control mt-2">
 							</div>
 							<div class="mr-3">
 								담당자 연락처<span class="text-danger">*</span>
-								<input id="phoneNumberInput" type="text" class="form-control mt-2">
+								<input name="phoneNumber" id="phoneNumberInput" type="text" class="form-control mt-2">
 							</div>						
 					</div>
-				</div>		
+				</div>	
+				</form>	
 			</div>
 		</div>	
 		</section>
@@ -66,54 +70,34 @@
 		$(document).ready(function(){
 			
 			
-			$("#nextBtn").on("click",function(){
+			$("#form").on("submit",function(){
+				
 				let companyName = $("#companyName").val();
 				let name = $("#nameInput").val();
 				let email = $("#emailInput").val();
 				let phoneNumber = $("#phoneNumber").val();
 				
-				if(companyName == ""){
-					alert("회사/사업자명을 입력해주세요");
-					return;
-				}
 				
 				if(name == ""){
 					alert("이름을 작성해주세요");
-					return;
+					return false;
 				}
 				
 				if(email == ""){
 					alert("이메일을 작성해주세요")
-					return;
+					return false;
 				}
 				
 				if(phoneNumber == ""){
 					alert("연락처를 작성해주세요")
-					return;
+					return false;
 				}
 				
-				$.ajax({
 					
-					type:"post",
-					url:"/post/forward1",
-					data:{"companyName":companyName,"name":name,"email":email,"phoneNumber":phoneNumber},
-					success:function(data){
-						
-						if(data.result == "success"){
-							
-							location.href="/post/regist2";
-						}else{
-							alert("프로젝트 등록 실패");
-						}
-					},
-					error(){
-						alert("프로젝트 등록 에러");
-						return;
-					}
-				});
-				
 			});
+				
 		});
+		
 	</script>
 
 </body>

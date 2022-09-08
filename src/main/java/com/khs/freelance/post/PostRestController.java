@@ -23,8 +23,7 @@ public class PostRestController {
 	// 프로젝트 등록 api
 	@PostMapping("/post/insert")
 	public Map<String,String> insertProject(
-			@RequestParam("userId") int userId
-			,@RequestParam("companyName") String companyName
+			@RequestParam(value= "companyName") String companyName
 			,@RequestParam("name") String name
 			,@RequestParam("email") String email
 			,@RequestParam("phoneNumber") String phoneNumber
