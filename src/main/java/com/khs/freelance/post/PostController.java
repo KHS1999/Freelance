@@ -100,4 +100,10 @@ public class PostController {
 	,@RequestParam("maxAmount") int maxAmount) {
 		return "/post/projectRegist5";	
 	}
+	//  프로젝트 찾기
+	@GetMapping("/post/search")
+	public String postSerach(){
+			
+		return "/post/findProject";
+		}
 }

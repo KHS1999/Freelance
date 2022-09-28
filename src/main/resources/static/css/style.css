@@ -36,7 +36,9 @@
 .section-div{
 	width:800px;
 	
-	background-color:white;
-	
-	
+	background-color:white;		
+}
+
+.search-section{
+	width:600px;
 }

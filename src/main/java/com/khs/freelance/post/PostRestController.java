@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +32,8 @@ public class PostRestController {
 			,@RequestParam("job") String job
 			,@RequestParam("needPerson") int needPerson
 			,@RequestParam("skill") String skill
-			,@RequestParam("startProject") Date startProject
+			,@DateTimeFormat(pattern = "yy-mm-dd") 
+			 @RequestParam("startProject") Date startProject
 			,@RequestParam("expectTerm") int expectTerm
 			,@RequestParam("projectBudget") String projectBudget
 			,@RequestParam("minAmount") int minAmount
@@ -40,7 +42,7 @@ public class PostRestController {
 			,@RequestParam("progress") String progress
 			,@RequestParam("main") String main
 			,@RequestParam("detail") String detail
-			,@RequestParam("file") MultipartFile file
+			,@RequestParam("file") MultipartFile file		
 			,HttpServletRequest request) {
 		
 		// 글쓴 사람 정보를 같이 저장하기 위해서
