@@ -17,11 +17,30 @@
 </head>
 <body>
 	<div id="wrap">
+<<<<<<< HEAD
+		<header class="d-flex justify-content-between mt-3">
+			<div>
+				<h1>Puzzle Project</h1>
+			</div>
+			<nav class=" ml-3 col-10 mt-3">
+				<ul class= "nav nav-fill">
+					<li class="nav-item"><a href="#" class="nav-link text-secondary mt-2" ><b>프로젝트 등록</b></a></li>
+					<li class="nav-item"><a href="#" class="nav-link text-secondary mt-2" ><b>프로젝트 찾기</b></a></li>
+					<li class="nav-item"><a href="#" class="nav-link text-secondary mt-2" ><b>로그인 / 회원가입</b></a></li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+			<div>
+				<img class="img" src="/static/images/main-banner1.jpg">
+				<div class="content "><h1 class="section-content"></h1>프로젝트 홍보내용</div>
+=======
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<section>
 			<div>
 				<img class="img" src="/static/images/main-banner.jpg">
 				<div class="content "><h1 class="section-content ">마지막 한조각 </h1></div>
+>>>>>>> bb6992d4022233b357b2e4ee7b4a39434f24537c
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
