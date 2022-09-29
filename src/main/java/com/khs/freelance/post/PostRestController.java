@@ -32,7 +32,7 @@ public class PostRestController {
 			,@RequestParam("job") String job
 			,@RequestParam("needPerson") int needPerson
 			,@RequestParam("skill") String skill
-			,@DateTimeFormat(pattern = "yy-mm-dd") 
+			,@DateTimeFormat(pattern = "yyyy-MM-dd") 
 			 @RequestParam("startProject") Date startProject
 			,@RequestParam("expectTerm") int expectTerm
 			,@RequestParam("projectBudget") String projectBudget
