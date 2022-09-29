@@ -17,6 +17,7 @@
 </head>
 <body>
 	<div id="wrap">
+<<<<<<< HEAD
 		<header class="d-flex justify-content-between mt-3">
 			<div>
 				<h1>Puzzle Project</h1>
@@ -33,6 +34,13 @@
 			<div>
 				<img class="img" src="/static/images/main-banner1.jpg">
 				<div class="content "><h1 class="section-content"></h1>프로젝트 홍보내용</div>
+=======
+		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
+		<section>
+			<div>
+				<img class="img" src="/static/images/main-banner.jpg">
+				<div class="content "><h1 class="section-content ">마지막 한조각 </h1></div>
+>>>>>>> bb6992d4022233b357b2e4ee7b4a39434f24537c
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>

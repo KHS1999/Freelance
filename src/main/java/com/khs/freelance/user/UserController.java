@@ -17,9 +17,4 @@ public class UserController {
 		return "/user/signin";
 	}
 	
-	// 메인 페이지
-	@GetMapping("/post/main/view")
-	public String main() {
-		return "/post/main";
-	}
 }
